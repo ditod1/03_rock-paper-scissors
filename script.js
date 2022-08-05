@@ -60,11 +60,12 @@ function game(playerSelection) {
   }
   if (playerScore === 5 || computerScore === 5) {
     if (playerScore > computerScore) {
-      score.textContent = `The Player Wins. Choose a weapon to start again, first to 5 wins `;
+      score.textContent = `The Player Wins. `;
     }
     else {
-      score.textContent = `The Computer Wins`;
+      score.textContent = `The Computer Wins. `;
     }
+    score.textContent += "Choose a weapon to start again"
     playerScore = 0;
     computerScore = 0;
   }
