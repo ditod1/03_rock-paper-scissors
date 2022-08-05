@@ -1,7 +1,5 @@
 //Rock, paper, scissors game
 
-
-
 function getComputerChoice() {
   let randNumber = Math.floor(Math.random() * 3);
   if (randNumber < 1) {
@@ -46,36 +44,41 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-let playerScore = 0;
-let computerScore = 0;
-
 function game(playerSelection) {
   const computerSelection = getComputerChoice();
   const result = playRound(playerSelection, computerSelection);
   if (result == "Win") {
-    console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
+    roundResult.textContent = `You Win! ${playerSelection} beats ${computerSelection}`;
     playerScore++;
   }
   else if (result == "Lose") {
-    console.log(`You Lose! ${computerSelection} beats ${playerSelection}`);
+    roundResult.textContent = `You Lose! ${playerSelection} loses to ${computerSelection}`;
     computerScore++;
   }
   else if (result == "Tie") {
-    console.log("It's a tie");
+    roundResult.textContent = "It's a tie";
   }
   if (playerScore === 5 || computerScore === 5) {
-    console.log(`The final score is [Player: ${playerScore} - Computer ${computerScore}]`)
+    if (playerScore > computerScore) {
+      score.textContent = `The Player Wins. Choose a weapon to start again, first to 5 wins `;
+    }
+    else {
+      score.textContent = `The Computer Wins`;
+    }
     playerScore = 0;
     computerScore = 0;
   }
   else {
-    console.log(`Score [Player: ${playerScore} - Computer ${computerScore}]`);
+    score.textContent = `Player: ${playerScore} - Computer ${computerScore}`;
   }
-
 }
 
+let playerScore = 0;
+let computerScore = 0;
 
-btn = document.querySelectorAll('button');
+const btn = document.querySelectorAll('button');
+const roundResult = document.querySelector('#result');
+const score = document.querySelector('#score');
 
 function choice(e) {
   game(this.id);
