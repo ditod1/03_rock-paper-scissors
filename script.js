@@ -1,5 +1,7 @@
 //Rock, paper, scissors game
 
+
+
 function getComputerChoice() {
   let randNumber = Math.floor(Math.random() * 3);
   if (randNumber < 1) {
@@ -44,19 +46,34 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
+let playerScore = 0;
+let computerScore = 0;
+
 function game(playerSelection) {
   const computerSelection = getComputerChoice();
   const result = playRound(playerSelection, computerSelection);
   if (result == "Win") {
-    console.log(`You Win! ${playerSelection} beats ${computerSelection}`)
+    console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
+    playerScore++;
   }
   else if (result == "Lose") {
     console.log(`You Lose! ${computerSelection} beats ${playerSelection}`);
+    computerScore++;
   }
   else if (result == "Tie") {
     console.log("It's a tie");
   }
+  if (playerScore === 5 || computerScore === 5) {
+    console.log(`The final score is [Player: ${playerScore} - Computer ${computerScore}]`)
+    playerScore = 0;
+    computerScore = 0;
+  }
+  else {
+    console.log(`Score [Player: ${playerScore} - Computer ${computerScore}]`);
+  }
+
 }
+
 
 btn = document.querySelectorAll('button');
 
